@@ -1,13 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useEffect, useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import SplasScreen from "./screen/SplasScreen";
+import MainScreen from "./screen/MainScreen";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  [splas, setSplas] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setSplas(false);
+    }, 3000);
+  });
+
+  return <>{splas ? <SplasScreen /> : <MainScreen />}</>;
 }
 
 const styles = StyleSheet.create({
